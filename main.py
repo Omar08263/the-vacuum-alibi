@@ -10,9 +10,11 @@ import os
 
 LINE = "I scanned the spot twice, classified it as modern art, and decided my job is to preserve culture, not erase it."
 
-# Gate the line itself: one sentence, 1-200 characters, not only whitespace.
+# Gate the line itself: one sentence, 1-200 characters, not only whitespace,
+# and strictly one line (no newline inside it: the entry is "One Line").
 assert 1 <= len(LINE) <= 200, f"line is {len(LINE)} chars, must be 1-200"
 assert LINE.strip(), "line must not be only whitespace"
+assert "\n" not in LINE and "\r" not in LINE, "line must be a single line"
 assert LINE.count(".") == 1 and LINE.endswith("."), "line must be a single sentence"
 
 
